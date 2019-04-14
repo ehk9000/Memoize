@@ -24,7 +24,7 @@ class App extends Component {
                 <h3>Click on a difficulty to begin!</h3>
             </header>
             <section>
-                <button onClick={}>Medium</button>
+                <button onClick>Medium</button>
                 <button>Easy</button>
                 <button>Hard</button>
             </section>
