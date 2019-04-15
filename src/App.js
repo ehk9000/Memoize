@@ -17,14 +17,15 @@ class App extends Component {
 
   render() {
     let gameContainer = this.state.questions.length ? <GameContainer questions={this.state.questions} /> 
-    : <img src={finnLoad}>loading...</img>;
+    : <div>
+    <img src={finnLoad} alt="finn the human logo"/> <p>Loading...</p> <img src={lspLoad} alt={lspLoad} />;
+
+    </div> 
     return (
       <div className="App">
        <main>
             <header>
                 <h1>Adventure Time!</h1>      
-                <h2> Master String Prototypes </h2>
-                <h3>Click on a difficulty to begin!</h3>
             </header>
             {gameContainer}
             

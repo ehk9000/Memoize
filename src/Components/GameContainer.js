@@ -65,17 +65,20 @@ class GameContainer extends Component {
     render() {
         let card = this.state.filteredQuestions.length ?
                 <Question currentQuestion={this.state.currentQuestion} />
-         : null;
-        return ( 
-        <div>
-            <section className="difficulty-wrapper">
+         : 
+         <div>
+             <h2> Master String Prototypes </h2>
+             <h3 className="difficulty-title">Click on a difficulty to begin!</h3>
+             <section className="difficulty-wrapper">
                 <button onClick={this.filterQuestions}>Hard</button>
                 <button onClick={this.filterQuestions}>Easy</button>
                 <button onClick={this.filterQuestions}>Medium</button>
-            </section>
-            <section className="card-area">
+             </section>;
+         </div>
+         
+        return ( 
+        <div>
                 {card}
-            </section>
         </div>
         )   
     }

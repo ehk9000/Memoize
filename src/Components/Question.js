@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import '../scss/Question.scss'
+
 
 
 class Question extends Component {
@@ -18,7 +20,8 @@ class Question extends Component {
             <article className="card-container">
                 <h3>{this.props.currentQuestion.question}</h3>
                 <h3>{this.props.currentQuestion.exampleString} </h3>
-                <input type="text" />
+                <input type="text" className="answer-input"/>
+                <input type="submit" />
             </article>
         )
     }
