@@ -1,17 +1,23 @@
 .card-container {
-    height: 500px;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 600px;
     width: 80%;
     border: 1px solid #778899;
     position: fixed;
+    justify-content: space-between;
     left: 170px;
     bottom: 150px;
     background-color:RGBA(0,0,0,.3); 
     box-shadow: 10px 10px 9px -5px rgba(0,0,0,0.74);
-
-
 }
 
-.answer-input {
-    margin-top: 120px;
-    margin-right: 50px;
+input {
+    align-self: center;
+    width: 50%;
 }
+
+.submit {
+    margin-bottom: 25px;
+}
+

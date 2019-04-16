@@ -1,26 +1,38 @@
 import React, { Component } from 'react';
 import GameContainer from './Components/GameContainer.js';
 import './scss/App.scss';
-import dataSet from './dataSet.js'
-import finnLoad from './images/finn-load.jpg';
-import lspLoad from './images/lsp-load.jpg';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoading: true,
-      questions: dataSet.cards
+      isLoading: false,
+      questions: []
     }
     console.log(this.state.questions)
   }
 
-  render() {
-    let gameContainer = this.state.questions.length ? <GameContainer questions={this.state.questions} /> 
-    : <div>
-    <img src={finnLoad} alt="finn the human logo"/> <p>Loading...</p> <img src={lspLoad} alt={lspLoad} />;
+  componentDidMount() {
+    this.setState({isLoading: true})
+    let base_Url = "https://fe-apps.herokuapp.com/";
 
+    fetch(`${base_Url}api/v1/memoize/1901/ehk9000/prototypequestions`)
+    .then(response => response.json())
+    .then(json => this.setState({
+      questions: json.prototypeQuestions,
+      isLoading: false
+    }))
+    .catch(err => {
+      throw new Error(err);
+    })
+  }
+
+  render() {
+    let gameContainer = this.state.isLoading ? 
+    <div className="load-wrapper">
+     <p>Loading...</p>
     </div> 
+    :  <GameContainer questions={this.state.questions} />  
     return (
       <div className="App">
        <main>

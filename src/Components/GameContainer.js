@@ -3,41 +3,46 @@ import ScoreBoard from './ScoreBoard';
 import Question from './Question.js'
 import '../scss/GameContainer.scss';
 
+const questionsRemaining = JSON.parse(localStorage.getItem('questionsRemaining')) || [];
+
+
 class GameContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             questionList: [],
             filteredQuestions: [],
-            currentQuestion: {},
-            currentIndex: 0
-
+            questionsRemaining: questionsRemaining,
+            currentIndex: 0,
+            currentQuestion: {}
         }
-        this.filterQuestions = this.filterQuestions.bind(this);
-        this.getQuestions = this.getQuestions.bind(this);
-        this.indexGenerator = this.indexGenerator.bind(this);
-
     }
 
     componentDidMount() {
         this.getQuestions();
     }
 
-    getQuestions() {
+    getQuestions = () => {
         const questionList = this.props.questions;
-        this.setState({
-            questionList: questionList
-        }, () => this.indexGenerator());
-        console.log("question list", questionList)
+        if(questionsRemaining.length) {
+            this.setState({
+                questionsRemaining: questionsRemaining
+            }, () => this.indexGenerator());
+        } else {
+            this.setState({
+                questionsRemaining: questionList
+            }, () => this.saveToStorage(), () => this.indexGenerator());
+            console.log("question list", questionList)
+        }
     }
 
-    saveToStorage() {
-        localStorage.setItem('questionsRemaining', JSON.stringify(this.state.questionList));
+    saveToStorage = () => {
+        localStorage.setItem('questionsRemaining', JSON.stringify(this.state.questionsRemaining));
     }
 
-    filterQuestions(e) {
+    filterQuestions = (e) => {
         let value = e.target.innerText.toLowerCase();
-        let filteredQuestions = this.state.questionList.filter(question => {
+        let filteredQuestions = this.state.questionsRemaining.filter(question => {
             return question.category === value;
         });
         this.setState({
@@ -48,23 +53,30 @@ class GameContainer extends Component {
         console.log("filtered questions", this.state.filteredQuestions);
     }
 
-    indexGenerator() {
+    indexGenerator = () => {
         const index = Math.floor(Math.random() * this.state.filteredQuestions.length);
         const card = this.state.filteredQuestions[index];
         this.setState({
             currentQuestion: card,
             currentIndex: index
         })
+        console.log("current everything", this.state.filteredQuestions);
+        
     }
 
-    removeQuestion() {
-        let currentIndex = this.state.currentIndex;
-        this.state.filterQuestions.splice(currentIndex, 1)
+    removeQuestion = () => {
+        let cardsRemaining = this.state.questionsRemaining;
+        let filteredCards = this.state.filteredQuestions;
+        cardsRemaining.splice(cardsRemaining.indexOf(this.state.currentQuestion.id), 1);
+        filteredCards.splice(this.state.currentIndex, 1);
+        this.indexGenerator();
+        this.saveToStorage();
     }
 
     render() {
         let card = this.state.filteredQuestions.length ?
-                <Question currentQuestion={this.state.currentQuestion} />
+                <Question currentQuestion={this.state.currentQuestion}
+                removeQuestion={this.removeQuestion} />
          : 
          <div>
              <h2> Master String Prototypes </h2>
@@ -73,9 +85,8 @@ class GameContainer extends Component {
                 <button onClick={this.filterQuestions}>Hard</button>
                 <button onClick={this.filterQuestions}>Easy</button>
                 <button onClick={this.filterQuestions}>Medium</button>
-             </section>;
+             </section>
          </div>
-         
         return ( 
         <div>
                 {card}
