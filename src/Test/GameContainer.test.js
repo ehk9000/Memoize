@@ -59,31 +59,48 @@ const mockData = [
     },
 ];
 
+const mockEvent = { preventDefault: jest.fn() };
+const mockFilterEvent = {target: {value: 'medium'}};
+
+
 describe('GameContainer', () => {
     let wrapper;
     beforeEach(() => {
         wrapper = shallow(
             <GameContainer 
-            mockData={mockData} />
+            questions={mockData} />
         )
     });
-    afterEach(() => {
-        wrapper = null;
-      });
 
     it('should match snapshot', () => {
         expect(wrapper).toMatchSnapshot();
-    })
+    });
 
     it('should have default state', () => {
+        wrapper.setState({questionsRemaining: mockData})
         expect(wrapper.state()).toEqual({
             questionList: [],
             filteredQuestions: [],
-            questionsRemaining: [],
+            questionsRemaining: mockData,
             currentIndex: 0,
-            currentQuestion: {}
+            currentQuestion: undefined
         });
     });
+
+    it('should filter questions', () => {
+        wrapper.setState({filteredQuestions: mockData})
+        wrapper.find(".medium").simulate('click', mockFilterEvent)
+        expect(wrapper.filteredQuestions).toHaveBeenCalled();
+        expect(wrapper.indexGenerator).toHaveBeenCalled();
+        expect(wrapper.state("filteredQuestions").toEqual(mockData))
+    });
+
+    it('should remove questions', () => {
+        wrapper.setState({filteredQuestions: mockData})
+        wrapper.instance().removeQuestion();
+        expect(wrapper).removeQuestion.toHaveBeenCalled()
+    })
+
 });
 
 

@@ -4,7 +4,7 @@ exports[`GameContainer should match snapshot 1`] = `
 <div>
   <div>
     <h2>
-       Master String Prototypes 
+      String Prototypes 
     </h2>
     <h3
       className="difficulty-title"
@@ -15,16 +15,19 @@ exports[`GameContainer should match snapshot 1`] = `
       className="difficulty-wrapper"
     >
       <button
+        className="hard"
         onClick={[Function]}
       >
         Hard
       </button>
       <button
+        className="easy"
         onClick={[Function]}
       >
         Easy
       </button>
       <button
+        className="medium"
         onClick={[Function]}
       >
         Medium

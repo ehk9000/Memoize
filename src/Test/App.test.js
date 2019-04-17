@@ -64,7 +64,7 @@ describe('App', () => {
 
     beforeEach(() => {
         wrapper = shallow(
-            <App/>
+            <App mockData={mockData}/>
         )
     })
 

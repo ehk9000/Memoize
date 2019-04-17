@@ -36,7 +36,6 @@ class GameContainer extends Component {
             this.setState({
                 questionsRemaining: questionList
             }, () => this.saveToStorage(), () => this.indexGenerator());
-            console.log("question list", questionList)
         }
     }
 
@@ -53,8 +52,6 @@ class GameContainer extends Component {
             filteredQuestions: filteredQuestions
         }, () => this.indexGenerator())
         
-        
-        console.log("filtered questions", this.state.filteredQuestions);
     }
 
     indexGenerator = () => {
@@ -63,9 +60,7 @@ class GameContainer extends Component {
         this.setState({
             currentQuestion: card,
             currentIndex: index
-        })
-        console.log("current everything", this.state.filteredQuestions);
-        
+        })        
     }
 
     removeQuestion = () => {
@@ -83,12 +78,12 @@ class GameContainer extends Component {
                 removeQuestion={this.removeQuestion} />
          : 
          <div>
-             <h2> Master String Prototypes </h2>
+             <h2>String Prototypes </h2>
              <h3 className="difficulty-title">Click on a difficulty to begin!</h3>
              <section className="difficulty-wrapper">
-                <button onClick={this.filterQuestions}>Hard</button>
-                <button onClick={this.filterQuestions}>Easy</button>
-                <button onClick={this.filterQuestions}>Medium</button>
+                <button onClick={this.filterQuestions} className="hard">Hard</button>
+                <button onClick={this.filterQuestions} className="easy">Easy</button>
+                <button onClick={this.filterQuestions} className="medium">Medium</button>
              </section>
          </div>
         return ( 

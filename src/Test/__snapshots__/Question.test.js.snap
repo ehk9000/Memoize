@@ -1,3 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Question should match snapshot 1`] = `""`;
+exports[`Question should match snapshot 1`] = `
+<article
+  className="card-container"
+>
+  <h3>
+    How would you split each word into its own string?
+  </h3>
+  <h3>
+    let bemo = "Yes, Finn. It goes in my butt."
+     
+  </h3>
+  <p />
+  <input
+    className="user-guess"
+    id="user-guess"
+    type="text"
+  />
+  <input
+    className="submit"
+    onClick={[Function]}
+    type="submit"
+  />
+</article>
+`;
