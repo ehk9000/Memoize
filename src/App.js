@@ -9,7 +9,6 @@ class App extends Component {
       isLoading: false,
       questions: []
     }
-    console.log(this.state.questions)
   }
 
   componentDidMount() {
