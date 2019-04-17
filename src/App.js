@@ -9,7 +9,6 @@ class App extends Component {
       isLoading: false,
       questions: []
     }
-    console.log(this.state.questions)
   }
 
   componentDidMount() {
@@ -37,7 +36,7 @@ class App extends Component {
       <div className="App">
        <main>
             <header>
-                <h1>Adventure Time!</h1>      
+                <h1 className="header-style">Adventure Time!</h1>      
             </header>
             {gameContainer}
             

@@ -1,9 +1,10 @@
 @import './normalize.css';
+@import './variables.scss';
 @import './App.scss';
 @import './GameContainer.scss';
 @import './Question.scss';
-@import url('https://fonts.googleapis.com/css?family=Patrick+Hand');
 
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand');
 
 body {
   margin: 0;

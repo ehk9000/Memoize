@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameContainer should match snapshot 1`] = `
+<div>
+  <div>
+    <h2>
+      String Prototypes 
+    </h2>
+    <h3
+      className="difficulty-title"
+    >
+      Click on a difficulty to begin!
+    </h3>
+    <section
+      className="difficulty-wrapper"
+    >
+      <button
+        className="hard"
+        onClick={[Function]}
+      >
+        Hard
+      </button>
+      <button
+        className="easy"
+        onClick={[Function]}
+      >
+        Easy
+      </button>
+      <button
+        className="medium"
+        onClick={[Function]}
+      >
+        Medium
+      </button>
+    </section>
+  </div>
+</div>
+`;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../scss/Question.scss'
+import '../scss/Question.scss';
 
 
 
@@ -10,7 +10,6 @@ class Question extends Component {
             errorMsg: ''
         }
     }
-    
     
 
     checkAnswer = (e) => {
@@ -35,7 +34,6 @@ class Question extends Component {
     }
 
     render() {  
-    console.log("question ", this.props.currentQuestion)
     if (this.props.currentQuestion === undefined) {
         return null;
     }
@@ -45,7 +43,7 @@ class Question extends Component {
                 <h3>{this.props.currentQuestion.question}</h3>
                 <h3>{this.props.currentQuestion.exampleString} </h3>
                 <p>{this.state.errorMsg}</p>
-                <input type="text" className="user-guess" id="user-guess" defaultValue=""/>
+                <input type="text" className="user-guess" id="user-guess"/>
                 <input type="submit" onClick={this.checkAnswer} className="submit"/>
             </article>
         )
