@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import ScoreBoard from './ScoreBoard';
 import Question from './Question.js'
 import '../scss/GameContainer.scss';
 
-const questionsRemaining = JSON.parse(localStorage.getItem('questionsRemaining')) || [];
 
 
 class GameContainer extends Component {
@@ -12,19 +10,25 @@ class GameContainer extends Component {
         this.state = {
             questionList: [],
             filteredQuestions: [],
-            questionsRemaining: questionsRemaining,
+            questionsRemaining: [],
             currentIndex: 0,
             currentQuestion: {}
         }
     }
 
     componentDidMount() {
+        const questionsRemaining = JSON.parse(localStorage.getItem('questionsRemaining')) || [];
+        this.setState({
+            questionsRemaining : questionsRemaining
+        });
         this.getQuestions();
+
     }
 
     getQuestions = () => {
         const questionList = this.props.questions;
-        if(questionsRemaining.length) {
+        const questionsRemaining = this.state.questionsRemaining;
+        if(this.state.questionsRemaining.length) {
             this.setState({
                 questionsRemaining: questionsRemaining
             }, () => this.indexGenerator());
