@@ -6,7 +6,9 @@ exports[`App should match snapshot 1`] = `
 >
   <main>
     <header>
-      <h1>
+      <h1
+        className="header-style"
+      >
         Adventure Time!
       </h1>
     </header>
@@ -27,7 +29,9 @@ exports[`App should set state to loading when snapshot is taken 1`] = `
 >
   <main>
     <header>
-      <h1>
+      <h1
+        className="header-style"
+      >
         Adventure Time!
       </h1>
     </header>

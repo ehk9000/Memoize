@@ -33,6 +33,7 @@ class Question extends Component {
          this.props.removeQuestion();
     }
 
+
     render() {  
     if (this.props.currentQuestion === undefined) {
         return null;
@@ -41,7 +42,7 @@ class Question extends Component {
         return (
             <article className="card-container">
                 <h3>{this.props.currentQuestion.question}</h3>
-                <h3>{this.props.currentQuestion.exampleString} </h3>
+                <h3>{this.props.currentQuestion.exampleString}</h3>
                 <p>{this.state.errorMsg}</p>
                 <input type="text" className="user-guess" id="user-guess"/>
                 <input type="submit" onClick={this.checkAnswer} className="submit"/>
