@@ -36,7 +36,7 @@ class App extends Component {
       <div className="App">
        <main>
             <header>
-                <h1>Adventure Time!</h1>      
+                <h1 className="header-style">Adventure Time!</h1>      
             </header>
             {gameContainer}
             

@@ -1,10 +1,12 @@
+@import './variables.scss';
+
 .App {
   text-align: center;
 }
 
 
 .load-wrapper {
-  display: flex;
+  display: $flex;
   flex-flow: row;
   justify-content: center;
 
@@ -12,4 +14,8 @@
 
 .load-img {
   height: 100px;
+}
+
+.header-style {
+  color: $titleColor;
 }
